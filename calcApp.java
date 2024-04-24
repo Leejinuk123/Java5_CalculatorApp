@@ -8,8 +8,7 @@ public class calcApp {
         ArrayList<Integer> resultArr = new ArrayList<>();
         int cnt = 0;
         do {
-            int result = calculate(sc);
-            resultArr.add(result);
+            resultArr.add(calculate(sc));
             System.out.println(resultArr);
 
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? ( remove 입력 )");
@@ -17,6 +16,17 @@ public class calcApp {
             str = sc.nextLine();
 
             if(str.equals("remove")) resultArr.remove(0);
+
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            str = sc.nextLine();
+
+            if(str.equals("inquiry")){
+                System.out.println("연산 결과: ");
+                for (Integer result : resultArr) {
+                    System.out.print(result + " ");
+                }
+                System.out.println();
+            }
 
             System.out.println("더 계산을 하겠습니까? (exit 입력 시 종료)");
             str = sc.nextLine();
