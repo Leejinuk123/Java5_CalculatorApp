@@ -1,10 +1,11 @@
 package calcLv2Package;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Calculator calc1 = new Calculator();
+        Calculator calc1 = new Calculator(new ArrayList<Integer>());
         Scanner sc = new Scanner(System.in);
         String command = "";
         int a,b;
@@ -24,18 +25,15 @@ public class Main {
             System.out.println("결과: " + result);
             calc1.setResultList(result);
 
-            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? ( remove 입력 )");
             sc.nextLine();
-            command = sc.nextLine();
 
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? ( remove 입력 )");
+            command = sc.nextLine();
             if (command.equals("remove")) calc1.removeResult();
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             command = sc.nextLine();
-
-            if (command.equals("inquiry")) {
-                System.out.println("연산 결과: " + calc1.getResultList());
-            }
+            if (command.equals("inquiry")) calc1.inquiryResults();
 
             System.out.println("더 계산을 하겠습니까? (exit 입력 시 종료)");
             command = sc.nextLine();

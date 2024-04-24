@@ -3,7 +3,11 @@ package calcLv2Package;
 import java.util.ArrayList;
 
 public class Calculator {
-    private final ArrayList<Integer> resultList = new ArrayList<>();
+    private final ArrayList<Integer> resultList;
+
+    public Calculator(ArrayList<Integer> ArrayList){
+        this.resultList = ArrayList;
+    }
 
     public ArrayList<Integer> getResultList() {
         return resultList;
@@ -16,6 +20,10 @@ public class Calculator {
     public void removeResult(){
         System.out.println("정상적으로 삭제했습니다.");
         this.resultList.remove(0);
+    }
+
+    public void inquiryResults(){
+        System.out.println("연산결과: " + getResultList());
     }
 
     public Integer calculate(int a, int b, char op) {
