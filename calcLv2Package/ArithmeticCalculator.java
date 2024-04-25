@@ -9,7 +9,8 @@ public class ArithmeticCalculator extends Calculator{
     AddOperator addOp = new AddOperator();
     SubtractOperator subOp = new SubtractOperator();
     MultiplyOperator mulOp = new MultiplyOperator();
-    ModOperator new ModOperator()
+    ModOperator modOp =  new ModOperator();
+    DivideOperator divOp = new DivideOperator();
 
     public ArithmeticCalculator() {
         super(new ArrayList<Double>());
@@ -27,17 +28,17 @@ public class ArithmeticCalculator extends Calculator{
                 operator = subOp;
                 break;
             case '*':
-                operator = ;
+                operator = mulOp;
                 break;
             case '%':
-                operator = ;
+                operator = modOp;
                 break;
             case '/':
                 if (b == 0) {
                     System.out.println("분모에 0이 입력될 수 없습니다.");
                     return (double) 0;
                 }
-                operator = new DivideOperator();
+                operator = divOp;
                 break;
             default:
                 System.out.println("Error");
