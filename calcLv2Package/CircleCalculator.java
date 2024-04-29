@@ -3,7 +3,6 @@ package calcLv2Package;
 import java.util.ArrayList;
 
 public class CircleCalculator extends Calculator{
-    public double radius;
     static final double PI = 3.14;
 
     public CircleCalculator() {
@@ -11,7 +10,7 @@ public class CircleCalculator extends Calculator{
     }
 
     @Override
-    public Double calculate() {
-        return  radius*radius*PI;
+    public Double calculate(double a,double b,char op) {
+        return  a*b*PI;
     }
 }

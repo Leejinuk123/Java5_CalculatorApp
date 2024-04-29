@@ -3,82 +3,27 @@ package calcLv2Package;
 import java.util.ArrayList;
 
 public class ArithmeticCalculator extends Calculator{
-    public double a;
-    public double b;
-    public char op;
-    AddOperator addOp = new AddOperator();
-    SubtractOperator subOp = new SubtractOperator();
-    MultiplyOperator mulOp = new MultiplyOperator();
-    ModOperator modOp =  new ModOperator();
-    DivideOperator divOp = new DivideOperator();
 
     public ArithmeticCalculator() {
         super(new ArrayList<Double>());
     }
 
     @Override
-    public Double calculate() {
+    public Double calculate(double a,double b,char op) throws ArithmeticException{
         Operator operator;
         double result = 0;
-        switch (op) {
-            case '+':
-                operator = addOp;
-                break;
-            case '-':
-                operator = subOp;
-                break;
-            case '*':
-                operator = mulOp;
-                break;
-            case '%':
-                operator = modOp;
-                break;
-            case '/':
+        for(Operation operation : Operation.values()){
+            if(operation.getOp() == op && '/' != op){
+                return operation.operate(a,b);
+            } else if(operation.getOp() == op && '/' == op){
                 if (b == 0) {
-                    System.out.println("분모에 0이 입력될 수 없습니다.");
-                    return (double) 0;
+                    throw new ArithmeticException("분모에 0이 입력될 수 없습니다.");
+                } else if (b != 0){
+                    return operation.operate(a,b);
                 }
-                operator = divOp;
-                break;
-            default:
-                System.out.println("Error");
-                return (double) 0;
+            }
         }
-        return operator.operate(a,b);
+        throw new ArithmeticException("연산자를 잘못 입력 했습니다.");
     }
 }
 
-class AddOperator implements Operator {
-    @Override
-    public double operate(double a, double b){
-        return a+b;
-    }
-}
-class SubtractOperator implements Operator {
-    @Override
-    public double operate(double a, double b){
-        return a-b;
-    }
-}
-
-class MultiplyOperator implements Operator {
-    @Override
-    public double operate(double a, double b){
-        return a*b;
-    }
-}
-
-class DivideOperator implements Operator {
-    @Override
-    public double operate(double a, double b){
-        return a/b;
-    }
-}
-
-class ModOperator implements Operator{
-    @Override
-    public double operate(double a, double b) {
-        return a%b;
-    }
-
-}

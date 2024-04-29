@@ -25,5 +25,5 @@ public abstract class Calculator {
         System.out.println("연산결과: " + getResultList());
     }
 
-    public abstract Double calculate();
+    public abstract Double calculate(double a,double b,char op);
 }
